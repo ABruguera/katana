@@ -1,23 +1,49 @@
 import sys
+from os.path import sep
 from os.path import splitext
 from PIL import Image
 
+
 # key: height, values: [width]
 resolutions = {
+    720: [
+      1280
+    ],
+    768: [
+        1024,
+        1366
+    ],
+    800: [
+      1280
+    ],
+    864: [
+      1536
+    ],
     900: [
+        1440,
         1600
+    ],
+    1024: [
+      1280
+    ],
+    1050: [
+      1680
     ],
     1080: [
         1920
+    ],
+    1200: [
+      1600
     ],
     1440: [
         2560
     ]
 }
 
+
 for path in sys.argv[1:]:
     im = Image.open(path)
-    file_path_arr = im.filename.split('\\')
+    file_path_arr = im.filename.split(sep)
     file_name_arr = splitext(file_path_arr[len(file_path_arr)-1])
     file_name = file_name_arr[0]
     file_format = file_name_arr[1]
